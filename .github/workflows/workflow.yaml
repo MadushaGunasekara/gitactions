@@ -1,0 +1,20 @@
+name: Testing
+
+on:
+  push:
+  pull_request:
+    paths:
+      - ./**
+      - .github/workflows/**
+
+jobs:
+  test-conditions:
+    name: Test Conditions
+    runs-on: ubuntu-latest
+    env:
+      REPOSITORY: ${{ github.repository }}
+    steps:
+      - name: t
+        if: github.event.pull_request.merged
+        run: |
+          echo "Found a pull request merged!!"
